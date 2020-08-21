@@ -1,0 +1,14 @@
+<div class = "container">
+  <p>
+    <strong>Course:</strong>
+    <%= @request_course.course.title %>
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    <%= @request_course.status %>
+  </p>
+
+  <%= link_to 'Edit', edit_request_course_path(@request_course) %> |
+  <%= link_to 'Back', request_courses_path %>
+</div>

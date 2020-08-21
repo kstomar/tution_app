@@ -1,0 +1,23 @@
+<%= form_with(model: request_course, local: true) do |form| %>
+  <% if request_course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(request_course.errors.count, "error") %> prohibited this request_course from being saved:</h2>
+
+      <ul>
+        <% request_course.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= form.label :status %>
+    <%= form.select :status, [:accept, :rejected] , class: "form-control" if current_user.teacher? %>
+    <%= form.select :status, [:done] , class: "form-control" if current_user.student? %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>
