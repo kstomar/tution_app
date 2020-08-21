@@ -170,6 +170,10 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
+    launchy (2.5.0)
+      addressable (~> 2.7)
+    letter_opener (1.7.0)
+      launchy (~> 2.2)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -343,10 +347,12 @@ DEPENDENCIES
   faker
   jbuilder (~> 2.7)
   jquery-rails
+  letter_opener
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.2)
+  ransack
   rspec-rails (~> 3.5)
   sass-rails (>= 6)
   selenium-webdriver

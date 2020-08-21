@@ -18,6 +18,14 @@ RSpec.describe RequestCoursesController, type: :controller do
       expect(response.media_type).to eq("application/json")
       expect(response).to have_http_status(200)
     end
+
+    it 'respond with requestd courses current user is teacher' do
+      user.update(role: "teacher")
+      get :index, format: :json
+
+      expect(response.media_type).to eq("application/json")
+      expect(response).to have_http_status(200)
+    end
   end
 
   describe 'GET show' do

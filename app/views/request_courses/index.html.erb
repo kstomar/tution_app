@@ -1,25 +1,13 @@
+<% if current_user.student? %>
+  <%= search_form_for @q, remote: true do |f| %>
+    <%= f.select(:status_eq, RequestCourse.statuses.to_a.map { |w| [w[0].humanize, w[1]] } ,{:include_blank => true}, {class: "form-control select2"}) %><br>
+    <%= f.submit "Search", class: "btn btn-success float-right ml-2"%>
+  <% end %>
+<% end %>
+
 <h1>Request Courses</h1>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Course</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @request_courses.each do |request_course| %>
-      <tr>
-        <td><%= request_course.user.name if current_user.teacher? %></td>
-        <td><%= link_to "#{request_course.course.title}", request_course.course %></td>
-        <td><%= request_course.status %></td>
-        <td><%= link_to 'Show', request_course %></td>
-        <td><%= link_to 'Edit', edit_request_course_path(request_course) if current_user.teacher? %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<div id="course_list">
+  <%= render 'list' %>
+</div>
 <%= link_to 'Back', root_path %>
 

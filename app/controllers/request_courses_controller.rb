@@ -3,9 +3,12 @@ class RequestCoursesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @request_courses = RequestCourse.all
+    @q = current_user.request_courses.ransack(params[:q])
+    @request_courses = @q.result
+    @request_courses = RequestCourse.all if current_user.teacher?
     respond_to do |format|
       format.html
+      format.js
       format.json { render json: @courses}
     end
   end

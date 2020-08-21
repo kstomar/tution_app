@@ -64,3 +64,5 @@ gem 'activeadmin'
 gem 'arctic_admin'
 gem 'activeadmin_addons'
 gem 'active_admin_datetimepicker'
+gem 'ransack'
+gem "letter_opener", :group => :development
